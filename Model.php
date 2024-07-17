@@ -58,4 +58,33 @@ class Model{
 
     }
 
+
+    // retrieve orders 
+
+    public static function getorders(){
+        include 'db.php';
+                    // Retrieve orders from the database
+            try {
+                $stmt = $pdo->query("SELECT * FROM orders");
+                $orders = $stmt->fetchAll();
+
+                foreach ($orders as $order) {
+                    echo "<tr>
+                            <td class='py-2 px-4'>{$order['order_id']}</td>
+                            <td class='py-2 px-4'>{$order['order_type']}</td>
+                            <td class='py-2 px-4'>{$order['stock_symbol']}</td>
+                            <td class='py-2 px-4'>{$order['quantity']}</td>
+                            <td class='py-2 px-4'>{$order['price']}</td>
+                            <td class='py-2 px-4'>{$order['status']}</td>
+                            <td class='py-2 px-4'>
+                            <button class='bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600'>Edit</button>
+                            <button class='bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600'>Cancel</button>
+                            </td>
+                        </tr>";
+                }
+            } catch (PDOException $e) {
+                echo 'Database error: ' . $e->getMessage();
+            }
+    }
+
 }

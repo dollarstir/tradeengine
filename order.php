@@ -24,7 +24,7 @@
           contentType: 'application/json',
           data: JSON.stringify(orderData),
           success: function(response) {
-            
+
             const order = JSON.parse(response);
             $("#orders-table tbody").append(`
               <tr>
@@ -131,6 +131,7 @@
           </tr>
         </thead>
         <tbody>
+            <?= Model::getorders();?>
           <!-- Order rows will be dynamically added here -->
         </tbody>
       </table>
