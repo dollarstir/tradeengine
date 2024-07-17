@@ -1,3 +1,5 @@
+
+<?php require_once 'Model.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,7 +133,8 @@
           </tr>
         </thead>
         <tbody>
-            <?= Model::getorders();?>
+            <?php
+            echo Model::getorders();?>
           <!-- Order rows will be dynamically added here -->
         </tbody>
       </table>
